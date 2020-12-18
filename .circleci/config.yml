@@ -11,8 +11,8 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
     steps:
-      - run: node --verion
-      - run: ech 'Hello World!'
+      - run: node --version
+      - run: echo 'Hello World!'
 workflows:
   app_tests:
     jobs:
