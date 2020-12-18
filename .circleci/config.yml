@@ -16,5 +16,7 @@ jobs:
 workflows:
   app_tests:
     jobs:
-      - node/test
       - test_echo
+      - node/test:
+          requires:
+            - test_echo
