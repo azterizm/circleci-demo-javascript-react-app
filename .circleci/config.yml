@@ -11,11 +11,9 @@ jobs:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD
     steps:
-      - run: node --version
-      - checkout
       - run: ls -a
-      - store_artifacts:
-          path: README.md
+      - run: cd ..
+      - run: ls -a
       - run: echo 'Hello World!'
 
 workflows:
