@@ -12,8 +12,9 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     steps:
       - run: node --version
+      - run: ls -a
       - store_artifacts:
-          path: README.md
+          path: ../README.md
       - run: echo 'Hello World!'
   list_cmd:
     docker:
