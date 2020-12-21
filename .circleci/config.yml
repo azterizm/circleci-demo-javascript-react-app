@@ -1,5 +1,5 @@
 orbs: # declare what orbs we are going to use
-  node: circleci/node@2.0.2 # the node orb provides common node-related configuration
+  node: circleci/node@4.1.0 # the node orb provides common node-related configuration
 
 version: 2.1 # using 2.1 provides access to orbs and other features
 
@@ -12,6 +12,8 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     steps:
       - run: node --version
+      - store_artifacts:
+          path: README.md
       - run: echo 'Hello World!'
   list_cmd:
     docker:
@@ -24,6 +26,7 @@ jobs:
           name: List Avaiable commands
           command: ls -al
       - run: echo 'Above are available commands'
+
 workflows:
   app_tests:
     jobs:
