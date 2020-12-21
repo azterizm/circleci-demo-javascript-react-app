@@ -12,29 +12,13 @@ jobs:
           password: $DOCKERHUB_PASSWORD
     steps:
       - run: node --version
+      - checkout
       - run: ls -a
       - store_artifacts:
-          path: ../README.md
+          path: README.md
       - run: echo 'Hello World!'
-  list_cmd:
-    docker:
-      - image: 'cimg/node:lts'
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD
-    steps:
-      - run:
-          name: List Avaiable commands
-          command: ls -al
-      - run: echo 'Above are available commands'
 
 workflows:
   app_tests:
     jobs:
       - test_echo
-      - node/test:
-          requires:
-            - test_echo
-  list_stuff:
-    jobs:
-      - list_cmd
